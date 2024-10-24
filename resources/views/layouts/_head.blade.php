@@ -62,6 +62,7 @@
 
   <link rel="stylesheet" type="text/css" href="{{asset('assets/lightgallery/css/lightgallery.min.css')}}">
 
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
   {{-- modul keuangan --}}
   {{-- <link rel="stylesheet" type="text/css" href="{{ asset('modul_keuangan/font-awesome_4_7_0/css/font-awesome.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('modul_keuangan/css/style.css') }}"> --}}

@@ -96,6 +96,8 @@
   {{-- core js --}}
   <script src="{{asset('assets/js/misc.js')}}"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+
   <script type="text/javascript">
     $('.input-daterange').datepicker({
         format:'dd-mm-yyyy'

@@ -143,6 +143,14 @@
               </a>
             </li>
 
+            <li class="nav-item {{Request::is('/postscontent') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/postscontent')}}">
+                <span class="menu-title">Post Management</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-wrench"></i>
+              </a>
+            </li>
+
               {{-- <li class="nav-item {{Request::is('setting') ? 'active' : '' || Request::is('setting/*') ? 'active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#setting" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Setting</span>

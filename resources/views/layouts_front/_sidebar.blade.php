@@ -206,14 +206,14 @@
                                                     <li><a href="single-video.html">Post video</a></li>
                                                     <li><a href="single-gallery.html">Post gallery</a></li>
                                                     <li><a href="single-audio.html">Post audio</a></li>
-                                                    <li><a href="single-image.html">Post image</a></li>
+                                             <li><strong>Pages</strong></li>
+                                                    <li><a href="typography.html">Typography</a></li>
+                                                    <li><a href="about.html">About us</a></li>
+                                                                       <li><a href="single-image.html">Post image</a></li>
                                                     <li><a href="single-full.html">Post full width</a></li>
                                                 </ul>
                                                 <ul class="col-md-2">
-                                                    <li><strong>Pages</strong></li>
-                                                    <li><a href="typography.html">Typography</a></li>
-                                                    <li><a href="about.html">About us</a></li>
-                                                    <li><a href="contact.html">Contact us</a></li>
+                                        <li><a href="contact.html">Contact us</a></li>
                                                     <li><a href="search.html">Search</a></li>
                                                     <li><a href="author.html">Author</a></li>
                                                     <li><a href="404.html">404 page</a></li>

@@ -36,4 +36,14 @@ Route::post('/simpanusers', 'UsersController@simpan');
 Route::get('/editusers', 'UsersController@edit');
 Route::get('/hapususers', 'UsersController@hapus');
 
+Route::get('/postscontent', 'PostController@index');
+Route::get('/tambahpostscontent', 'PostController@tambah');
+Route::get('/postscontenttable', 'PostController@datatable');
+Route::post('/simpanpostscontent', 'PostController@simpan');
+Route::get('/editpostscontent/{id}', 'PostController@edit');
+Route::get('/doeditpostscontent', 'PostController@doedit');
+Route::get('/removeimagepostscontent', 'PostController@removeimage');
+Route::get('/hapuspostscontent', 'PostController@hapus');
+
+
 }); // End Route Groub middleware auth
