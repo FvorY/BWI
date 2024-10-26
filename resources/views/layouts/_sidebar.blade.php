@@ -139,7 +139,7 @@
               <a class="nav-link" href="{{url('/users')}}">
                 <span class="menu-title">User Management</span>
                 {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
-                <i class="fa fa-wrench"></i>
+                <i class="fa fa-user"></i>
               </a>
             </li>
 
@@ -147,26 +147,25 @@
               <a class="nav-link" href="{{url('/postscontent')}}">
                 <span class="menu-title">Post Management</span>
                 {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
-                <i class="fa fa-wrench"></i>
+                <i class="fa fa-newspaper-o"></i>
               </a>
             </li>
 
-              {{-- <li class="nav-item {{Request::is('setting') ? 'active' : '' || Request::is('setting/*') ? 'active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#setting" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Setting</span>
+            <li class="nav-item {{Request::is('profil') ? 'active' : '' || Request::is('profil/*') ? 'active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#profil" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Profil</span>
                   <span class="d-none">
-                    Setting
+                    Profil
                   </span>
                   <i class="menu-arrow"></i>
-                  <i class="mdi mdi-settings menu-icon mdi-spin"></i>
+                  <i class="mdi mdi-account-search"></i>
                 </a>
-                <div class="collapse {{Request::is('setting') ? 'show' : '' || Request::is('setting/*') ? 'show' : '' }}" id="setting">
+                <div class="collapse {{Request::is('profil') ? 'show' : '' || Request::is('profil/*') ? 'show' : '' }}" id="profil">
                   <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link {{Request::is('setting/backgroundheader') ? 'active' : '' || Request::is('setting/backgroundheader/*') ? 'active' : '' }}" href="{{url('setting/backgroundheader')}}">Background Header<span class="d-none">Setting</span></a></li>
-
+                    <li class="nav-item"> <a class="nav-link {{Request::is('profil/visimisi') ? 'active' : '' || Request::is('profil/visimisi/*') ? 'active' : '' }}" href="{{url('profil/visimisi')}}">Visi Misi<span class="d-none">Visi Misi</span></a></li>
                   </ul>
                   </div>
-              </li> --}}
+              </li>
 
           </ul>
 

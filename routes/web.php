@@ -14,6 +14,7 @@
 
 
 Route::get('/', 'HomefrontController@index')->name('/');
+Route::get('/visimisi', 'HomefrontController@visimisi');
 
 Route::group(['middleware' => 'guest'], function () {
 
@@ -44,6 +45,9 @@ Route::get('/editpostscontent/{id}', 'PostController@edit');
 Route::get('/doeditpostscontent', 'PostController@doedit');
 Route::get('/removeimagepostscontent', 'PostController@removeimage');
 Route::get('/hapuspostscontent', 'PostController@hapus');
+
+Route::get('/profil/visimisi', 'VisimisiController@index');
+Route::post('/profil/visimisi/save', 'VisimisiController@save');
 
 
 }); // End Route Groub middleware auth

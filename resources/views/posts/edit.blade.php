@@ -109,7 +109,7 @@ var myDropzone = new Dropzone(".dropzone", {
   thumbnailHeight: 380,
    url: "{{url('/simpanpostscontent')}}",
    acceptedFiles:'image/*',
-   params: function params(files, xhr, chunk) { return { '_token' : "{{csrf_token()}}", 'link' : $('#link').val(), 'name' : $('#name').val(), 'description' : $('#description').val(), 'category' : $('#category').val(), 'id' : $('#id').val() }; },
+   params: function params(files, xhr, chunk) { return { '_token' : "{{csrf_token()}}", 'title' : $('#title').val(), 'body' : $('#body').val(), 'id' : $('#id').val() }; },
    init: function() {
 
             this.on("removedfile", function(file, response) {
@@ -133,7 +133,7 @@ var myDropzone = new Dropzone(".dropzone", {
                     message: 'Data Berhasil Disimpan!',
                 });
                 setTimeout(function () {
-                  window.location.href = "{{url('/portofoliocontent')}}";
+                  window.location.href = "{{url('/postscontent')}}";
                 }, 1000);
               }else if(response.status == 2){
                 iziToast.warning({
@@ -146,7 +146,7 @@ var myDropzone = new Dropzone(".dropzone", {
                     message: 'Data Berhasil Diubah!',
                 });
                 setTimeout(function () {
-                  window.location.href = "{{url('/portofoliocontent')}}";
+                  window.location.href = "{{url('/postscontent')}}";
                 }, 1000);
               }else if (response.status == 4){
                 iziToast.warning({
@@ -166,7 +166,7 @@ $.ajax({
   success : function(response) {
     console.log(response);
     $('#title').val(response.posts.title);
-    $('#body').val(response.posts.body);
+    $('#body').summernote('code', response.posts.body);
 
     var imagevalues = new Array();
 
@@ -194,7 +194,7 @@ $('#btnsubmit').click(function(){
     } else {
         $.ajax({
           type: 'post',
-          data: {'_token' : "{{csrf_token()}}", 'link' : $('#link').val(), 'name' : $('#name').val(), 'description' : $('#description').val(), 'category' : $('#category').val(), 'id' : $('#id').val()},
+          data: {'_token' : "{{csrf_token()}}", 'title' : $('#title').val(), 'body' : $('#body').val(), 'id' : $('#id').val()},
           dataType : 'json',
           url: baseUrl + '/simpanpostscontent',
           success: function(response) {
