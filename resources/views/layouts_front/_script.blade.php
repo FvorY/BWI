@@ -17,4 +17,6 @@
 <script src="{{ asset('assets/vendors/jquery.theia.sticky.js') }}"></script>
 <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 <script src="{{ asset('assets/vendors/main.js') }}"></script>
- 
+<script src="{{asset('assets/js/data-table.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/datatables/datatables.min.js')}}"></script>
+<script src="{{asset('assets/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"></script>

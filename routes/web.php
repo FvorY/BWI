@@ -15,6 +15,9 @@
 
 Route::get('/', 'HomefrontController@index')->name('/');
 Route::get('/visimisi', 'HomefrontController@visimisi');
+Route::get('/data-wakaf', 'DataWakafController@index')->name('data-wakaf');
+Route::get('/data-wakaf/get-data', 'DataWakafController@getData')->name('data-wakaf.getData');
+
 
 Route::group(['middleware' => 'guest'], function () {
 

@@ -135,50 +135,42 @@
                 <div class="scroll-progress gradient-bg-1"></div>
                 <div class="mobile_menu d-lg-none d-block"></div>
                 <div class="container">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-lg-2 col-md-3">
-                            <div class="header-logo d-none d-lg-block">
-                                <a href="index.html">
-                                    <img class="logo-img d-inline" src="assets/imgs/logo.svg" alt="">
-                                </a>
-                            </div>
-                            <div class="logo-tablet d-md-inline d-lg-none d-none">
-                                <a href="index.html">
-                                    <img class="logo-img d-inline" src="assets/imgs/logo.svg" alt="">
-                                </a>
-                            </div>
-                            <div class="logo-mobile d-block d-md-none">
-                                <a href="index.html">
-                                    <img class="logo-img d-inline" src="assets/imgs/favicon.svg" alt="">
+                            <div class="header-logo d-flex align-items-center">
+                                <a href="{{ url('/') }}" class="d-flex align-items-center">
+                                    <img class="logo-img d-none d-lg-inline" src="{{ asset('assets/images/logo.png') }}" alt="Logo" style="height: 45px; width: 45px; object-fit: contain;">
+                                    <img class="logo-img d-none d-md-inline d-lg-none" src="{{ asset('assets/images/logo.png') }}" alt="Logo" style="height: 45px; width: 45px; object-fit: contain;">
+                                    <img class="logo-img d-inline d-md-none" src="{{ asset('assets/images/favicon.png') }}" alt="Logo" style="height: 45px; width: 45px; object-fit: contain;">
+                                    <span class="ml-2 font-weight-bold">BWI Jakarta</span>
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-10 col-md-9 main-header-navigation">
-                            <!-- Main-menu -->
-                            <div class="main-nav text-left float-lg-left float-md-right">
-                                <ul class="mobi-menu d-none menu-3-columns" id="navigation">
-                                    <li class="cat-item cat-item-2"><a href="#">Global Economy</a></li>
-                                    <li class="cat-item cat-item-3"><a href="#">Environment</a></li>
-                                    <li class="cat-item cat-item-4"><a href="#">Religion</a></li>
-                                    <li class="cat-item cat-item-5"><a href="#">Fashion</a></li>
-                                    <li class="cat-item cat-item-6"><a href="#">Terrorism</a></li>
-                                    <li class="cat-item cat-item-7"><a href="#">Conflicts</a></li>
-                                    <li class="cat-item cat-item-2"><a href="#">Scandals</a></li>
-                                    <li class="cat-item cat-item-2"><a href="#">Executive</a></li>
-                                    <li class="cat-item cat-item-2"><a href="#">Foreign policy</a></li>
-                                    <li class="cat-item cat-item-2"><a href="#">Healthy Living</a></li>
-                                    <li class="cat-item cat-item-3"><a href="#">Medical Research</a></li>
-                                    <li class="cat-item cat-item-4"><a href="#">Children’s Health</a></li>
-                                    <li class="cat-item cat-item-5"><a href="#">Around the World</a></li>
-                                    <li class="cat-item cat-item-6"><a href="#">Ad Choices</a></li>
-                                    <li class="cat-item cat-item-7"><a href="#">Mental Health</a></li>
-                                    <li class="cat-item cat-item-2"><a href="#">Media Relations</a></li>
-                                </ul>
-                                <nav>
-                                    <ul class="main-menu d-none d-lg-inline">
+                            <div class="main-nav d-flex justify-content-between align-items-center">
+                                <nav class="flex-grow-1">
+                                    <ul class="mobi-menu d-lg-none menu-3-columns" id="navigation">
+                                        <li class="cat-item cat-item-2"><a href="#">Global Economy</a></li>
+                                        <li class="cat-item cat-item-3"><a href="#">Environment</a></li>
+                                        <li class="cat-item cat-item-4"><a href="#">Religion</a></li>
+                                        <li class="cat-item cat-item-5"><a href="#">Fashion</a></li>
+                                        <li class="cat-item cat-item-6"><a href="#">Terrorism</a></li>
+                                        <li class="cat-item cat-item-7"><a href="#">Conflicts</a></li>
+                                        <li class="cat-item cat-item-2"><a href="#">Scandals</a></li>
+                                        <li class="cat-item cat-item-2"><a href="#">Executive</a></li>
+                                        <li class="cat-item cat-item-2"><a href="#">Foreign policy</a></li>
+                                        <li class="cat-item cat-item-2"><a href="#">Healthy Living</a></li>
+                                        <li class="cat-item cat-item-3"><a href="#">Medical Research</a></li>
+                                        <li class="cat-item cat-item-4"><a href="#">Children’s Health</a></li>
+                                        <li class="cat-item cat-item-5"><a href="#">Around the World</a></li>
+                                        <li class="cat-item cat-item-6"><a href="#">Ad Choices</a></li>
+                                        <li class="cat-item cat-item-7"><a href="#">Mental Health</a></li>
+                                        <li class="cat-item cat-item-2"><a href="#">Media Relations</a></li>
+                                    </ul>
+                                    
+                                    <ul class="main-menu d-none d-lg-flex justify-content-start">
                                         <li class="menu-item-has-children">
-                                            <a href="{{ url("/") }}"><span class="mr-15">
-                                                </span>HOME</a>
+                                            <a href="{{ url('/') }}">HOME</a>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a><span class="mr-15">
@@ -193,7 +185,7 @@
                                             <a><span class="mr-15">
                                                 </span>INFORMASI PUBLIK</a>
                                             <ul class="sub-menu text-muted font-small">
-                                                <li><a href="index.html">Data Tanah Wakaf</a></li>
+                                                <li><a href="{{ url('/data-wakaf') }}">Data Tanah Wakaf</a></li>
                                                 <li><a href="home-2.html">Data Nazir</a></li>
                                                 <li><a href="home-3.html">Formulir Pergantian / Penetapan Nazir</a></li>
                                                  <li><a href="home-3.html">Literasi</a></li>
@@ -211,12 +203,14 @@
                                         </li>
                                     </ul>
                                 </nav>
+                                
+                                <!-- <form action="#" method="get" class="search-form d-none d-lg-flex align-items-center ml-auto">
+                                    <input type="text" class="search_field" placeholder="Search" name="s">
+                                    <button type="submit" class="search-icon border-0 bg-transparent">
+                                        <i class="ti-search"></i>
+                                    </button>
+                                </form> -->
                             </div>
-                            <!-- Search -->
-                            <form action="#" method="get" class="search-form d-lg-inline float-right position-relative mr-30 d-none">
-                                <input type="text" class="search_field" placeholder="Search" value="" name="s">
-                                <span class="search-icon"><i class="ti-search mr-5"></i></span>
-                            </form>
                         </div>
                     </div>
                 </div>

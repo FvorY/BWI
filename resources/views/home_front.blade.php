@@ -281,9 +281,19 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center mt-50 mb-50">
-                                <a href="#">
-                                    <img class="border-radius-10 d-inline" src="assets/imgs/ads.jpg" alt="post-slider">
-                                </a>
+                                <div id="adsCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+                                    <div class="carousel-inner" style="height: 200px;">
+                                        <div class="carousel-item active mr-3" data-interval="5000">
+                                            <img class="border-radius-10 d-inline w-100 h-100" style="object-fit: cover;" src="assets/imgs/ads.jpg" alt="Advertisement 1">
+                                        </div>
+                                        <div class="carousel-item mr-3" data-interval="5000">
+                                            <img class="border-radius-10 d-inline w-100 h-100" style="object-fit: cover;" src="assets/imgs/ads.jpg" alt="Advertisement 2">
+                                        </div>
+                                        <div class="carousel-item mr-3" data-interval="5000">
+                                            <img class="border-radius-10 d-inline w-100 h-100" style="object-fit: cover;" src="assets/imgs/ads.jpg" alt="Advertisement 3">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
