@@ -49,5 +49,28 @@ Route::get('/hapuspostscontent', 'PostController@hapus');
 Route::get('/profil/visimisi', 'VisimisiController@index');
 Route::post('/profil/visimisi/save', 'VisimisiController@save');
 
+Route::get('/cities', 'CitiesController@index');
+Route::get('/citiestable', 'CitiesController@datatable');
+Route::post('/simpancities', 'CitiesController@simpan');
+Route::get('/editcities', 'CitiesController@edit');
+Route::get('/hapuscities', 'CitiesController@hapus');
+
+Route::get('/subdistricts', 'SubdistrictsController@index');
+Route::get('/subdistrictstable', 'SubdistrictsController@datatable');
+Route::post('/simpansubdistricts', 'SubdistrictsController@simpan');
+Route::get('/editsubdistricts', 'SubdistrictsController@edit');
+Route::get('/hapussubdistricts', 'SubdistrictsController@hapus');
+
+Route::get('/vilages', 'VilagesController@index');
+Route::get('/vilagestable', 'VilagesController@datatable');
+Route::post('/simpanvilages', 'VilagesController@simpan');
+Route::get('/editvilages', 'VilagesController@edit');
+Route::get('/hapusvilages', 'VilagesController@hapus');
+
+Route::get('/wakafland', 'WakaflandController@index');
+Route::get('/wakaflandtable', 'WakaflandController@datatable');
+Route::post('/simpanwakafland', 'WakaflandController@simpan');
+Route::get('/editwakafland', 'WakaflandController@edit');
+Route::get('/hapuswakafland', 'WakaflandController@hapus');
 
 }); // End Route Groub middleware auth

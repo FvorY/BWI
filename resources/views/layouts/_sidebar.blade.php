@@ -151,9 +151,48 @@
               </a>
             </li>
 
+<<<<<<< HEAD
              <li class="nav-item {{ Request::is('setting') || Request::is('setting/*') ? 'active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#setting" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Setting</span>
+=======
+
+            <li class="nav-item {{Request::is('/cities') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/cities')}}">
+                <span class="menu-title">Cities</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
+              <li class="nav-item {{Request::is('/subdistricts') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/subdistricts')}}">
+                <span class="menu-title">Subdistricts</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
+              <li class="nav-item {{Request::is('/vilages') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/vilages')}}">
+                <span class="menu-title">Vilages</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
+             <li class="nav-item {{Request::is('/wakafland') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/wakafland')}}">
+                <span class="menu-title">Wakaf Land</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
+            <li class="nav-item {{Request::is('profil') ? 'active' : '' || Request::is('profil/*') ? 'active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#profil" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Profil</span>
+>>>>>>> 8e29558 (fix wakaf land)
                   <span class="d-none">
                     Profil
                   </span>
