@@ -217,12 +217,6 @@
                                 <input type="text" class="search_field" placeholder="Search" value="" name="s">
                                 <span class="search-icon"><i class="ti-search mr-5"></i></span>
                             </form>
-                            <!-- Off canvas -->
-                            <div class="off-canvas-toggle-cover">
-                                <div class="off-canvas-toggle hidden d-inline-block ml-15" id="off-canvas-toggle">
-                                    <ion-icon name="grid-outline"></ion-icon>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
