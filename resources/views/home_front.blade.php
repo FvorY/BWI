@@ -118,74 +118,6 @@
                                
                             </div>
                             <div class="col-lg-4 col-md-12 sidebar-right">
-                                <!--Post aside style 1-->
-                                <div class="sidebar-widget mb-30">
-                                    <div class="widget-header position-relative mb-30">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h4 class="widget-title mb-0">Don't <span>miss</span></h4>
-                                            </div>
-                                            <div class="col-5 text-right">
-                                                <h6 class="font-medium pr-15">
-                                                    <a class="text-muted font-small" href="#">View all</a>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post-aside-style-1 border-radius-10 p-20 bg-white">
-                                        <ul class="list-post">
-                                            <li class="mb-20">
-                                                <div class="d-flex">
-                                                    <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                                        <a class="color-white" href="single.html">
-                                                            <img src="assets/imgs/thumbnail-4.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-content media-body">
-                                                        <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">Federal arrests show no sign that antifa plotted protests</a></h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="mb-20">
-                                                <div class="d-flex">
-                                                    <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                                        <a class="color-white" href="single.html">
-                                                            <img src="assets/imgs/thumbnail-15.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-content media-body">
-                                                        <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">How line-dried laundry gets that fresh smell</a></h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="mb-20">
-                                                <div class="d-flex">
-                                                    <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                                        <a class="color-white" href="single.html">
-                                                            <img src="assets/imgs/thumbnail-16.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-content media-body">
-                                                        <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">Traveling tends to magnify all human emotions</a></h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="post-thumb d-flex mr-15 border-radius-5 img-hover-scale">
-                                                        <a class="color-white" href="single.html">
-                                                            <img src="assets/imgs/thumbnail-15.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-content media-body">
-                                                        <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">How line-dried laundry gets that fresh smell</a></h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                               
                                
                                 <!--Post aside style 2-->
                                 <div class="sidebar-widget">
@@ -280,17 +212,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center mt-50 mb-50">
-                                <div id="adsCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
-                                    <div class="carousel-inner" style="height: 200px;">
-                                        <div class="carousel-item active mr-3" data-interval="5000">
-                                            <img class="border-radius-10 d-inline w-100 h-100" style="object-fit: cover;" src="assets/imgs/ads.jpg" alt="Advertisement 1">
+                            <div class="col-lg-8 col-md-12 text-center mt-50 mb-50">
+                                <div id="adsCarousel" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner d-flex">
+                                        <div class="carousel-item active">
+                                            <img class="border-radius-10 h-200" src="assets/imgs/ads.jpg" alt="Advertisement 1">
                                         </div>
-                                        <div class="carousel-item mr-3" data-interval="5000">
-                                            <img class="border-radius-10 d-inline w-100 h-100" style="object-fit: cover;" src="assets/imgs/ads.jpg" alt="Advertisement 2">
+                                        <div class="carousel-item">
+                                            <img class="border-radius-10 h-200" src="assets/imgs/ads.jpg" alt="Advertisement 2">
                                         </div>
-                                        <div class="carousel-item mr-3" data-interval="5000">
-                                            <img class="border-radius-10 d-inline w-100 h-100" style="object-fit: cover;" src="assets/imgs/ads.jpg" alt="Advertisement 3">
+                                        <div class="carousel-item">
+                                            <img class="border-radius-10 h-200" src="assets/imgs/ads.jpg" alt="Advertisement 3">
                                         </div>
                                     </div>
                                 </div>

@@ -20,3 +20,4 @@
 <script src="{{asset('assets/js/data-table.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/datatables/datatables.min.js')}}"></script>
 <script src="{{asset('assets/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"></script>
+<script src="{{ asset('assets/js/carousel-custom.js') }}"></script>

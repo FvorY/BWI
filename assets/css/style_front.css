@@ -581,3 +581,40 @@ pre{border:1px solid #eee;font-size:1em;line-height:1.8;margin:15px 0;max-width:
 	100%{transform:translate3d(0,0,0);}
 }
 .jump{transform-origin:0;animation:jump .5s linear alternate infinite;}
+
+#adsCarousel {
+    overflow: hidden;
+}
+
+#adsCarousel .carousel-inner {
+    display: flex;
+}
+
+#adsCarousel .carousel-item {
+    margin-right: 15px;
+    flex: 0 0 auto;
+    opacity: 0;
+    transition: all 1.5s ease;
+}
+
+#adsCarousel .carousel-item.active {
+    opacity: 1;
+}
+
+#adsCarousel img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Custom animation for smooth sliding */
+@keyframes slideAnimation {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
