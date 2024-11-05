@@ -116,6 +116,22 @@
               </a>
             </li>
 
+            <li class="nav-item {{Request::is('/wakifs') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/wakifs')}}">
+                <span class="menu-title">Wakifs</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
+            <li class="nav-item {{Request::is('/nadzirs') ? 'active' : ''}}">
+              <a class="nav-link" href="{{url('/nadzirs')}}">
+                <span class="menu-title">Nadzirs</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
             <li class="nav-item {{Request::is('/wakafland') ? 'active' : ''}}">
               <a class="nav-link" href="{{url('/wakafland')}}">
                 <span class="menu-title">Wakaf Land</span>
