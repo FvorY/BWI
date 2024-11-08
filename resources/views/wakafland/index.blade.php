@@ -3,7 +3,10 @@
 
 @include('wakafland.tambah')
 <style type="text/css">
-
+  #map {
+    height: 300px;
+    width: 100%;
+  }
 </style>
 <!-- partial -->
 <div class="content-wrapper">
@@ -50,6 +53,30 @@
   </div>
 </div>
 <!-- content-wrapper ends -->
+
+<!-- Modal -->
+<div id="mapmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-xs">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header bg-gradient-info">
+        <h4 class="modal-title">Pick Location</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+           <div id="map">
+
+           </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="pickmap()" type="button" >Process</button>
+        </div>
+      </div>
+      </div>
+
+  </div>
+</div>
+
 @endsection
 @section('extra_script')
 <script>
@@ -207,6 +234,60 @@ var table = $('#table-data').DataTable({
     // var table1 = $('#table_modal').DataTable();
     // table1.ajax.reload();
     table.ajax.reload();
+  }
+
+  const mymap = L.map('map');
+  var latitude = 0
+  var longitude = 0
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: ['a', 'b', 'c'],
+      minZoom: 1,
+      maxZoom: 19
+  }).addTo(mymap);
+
+  if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          // Set map view to the user's current location with a default zoom level
+          mymap.setView([lat, lng], 13);
+
+          // Add a marker at the user's current location
+          const marker = L.marker([lat, lng]).addTo(mymap);
+          marker.bindPopup("You are here!").openPopup();
+
+          // Update input fields
+          latitude = lat;
+          longitude = lng;
+
+          // Update marker location on map click
+          mymap.on('click', function(e) {
+              latitude = e.latlng.lat
+              longitude = e.latlng.lng
+              marker.setLatLng(e.latlng);
+          });
+      }, function(error) {
+          console.error("Geolocation error:", error.message);
+          alert("Geolocation failed. Please check location permissions.");
+          mymap.setView([51.505, -0.09], 13); // Default to London if location fails
+      });
+  } else {
+      alert("Geolocation is not supported by this browser.");
+      mymap.setView([51.505, -0.09], 13); // Default to London if geolocation is not supported
+  }
+
+  $('#mapmodal').on('shown.bs.modal', function(){
+      mymap.invalidateSize();
+  });
+
+  function pickmap() {
+    document.querySelector('.latitude').value = latitude;
+    document.querySelector('.longitude').value = longitude;
+
+    $('#mapmodal').modal('hide');
   }
 </script>
 @endsection
