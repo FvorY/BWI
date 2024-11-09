@@ -106,6 +106,17 @@
             </td>
           </tr>
           <tr>
+          <td>
+           <center> 
+             <button type="button" data-toggle="modal" data-target="#mapmodal" class="btn btn-primary">
+                  <i class="fa fa-map-marker"></i>
+                  Pick Location
+              </button>
+             </center>
+          </td>
+            
+          </tr>
+          <tr>
             <td>Latitude</td>
             <td>
               <input type="number" class="form-control form-control-sm inputtext latitude" name="latitude">

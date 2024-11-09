@@ -76,4 +76,16 @@ Route::post('/simpanwakafland', 'WakaflandController@simpan');
 Route::get('/editwakafland', 'WakaflandController@edit');
 Route::get('/hapuswakafland', 'WakaflandController@hapus');
 
+Route::get('/wakifs', 'WakifsController@index');
+Route::get('/wakifstable', 'WakifsController@datatable');
+Route::post('/simpanwakifs', 'WakifsController@simpan');
+Route::get('/editwakifs', 'WakifsController@edit');
+Route::get('/hapuswakifs', 'WakifsController@hapus');
+
+Route::get('/nadzirs', 'NadzirsController@index');
+Route::get('/nadzirstable', 'NadzirsController@datatable');
+Route::post('/simpannadzirs', 'NadzirsController@simpan');
+Route::get('/editnadzirs', 'NadzirsController@edit');
+Route::get('/hapusnadzirs', 'NadzirsController@hapus');
+
 }); // End Route Groub middleware auth
