@@ -22,6 +22,7 @@
                         </div>
                         </div>
                         <div class="container">
+                            <div class="table-responsive">
                                 <table class="custom-table" id="wakafTable">
                                     <thead>
                                         <tr>
@@ -58,6 +59,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,7 +67,6 @@
     </div>
 </div>
 @endsection
-
 <!-- Add Font Awesome for sort icons -->
 
 <!-- Initialize DataTable -->
@@ -212,16 +213,59 @@ $(document).ready(function() {
                         <i class="fas fa-chevron-right ms-2 text-muted"></i>
                     </a>`;
 
+                const certifiedHref = `{{ url('/jumlah-wakaf') }}?id=${item.id}&type=certified`;
+                const uncertifiedHref = `{{ url('/jumlah-wakaf') }}?id=${item.id}&type=uncertified`;
+
+                const jumlahCell = currentRegion ? 
+                    `<td class="text-center clickable-cell text-primary fw-bolder" data-label="Jumlah" data-href="${certifiedHref}">${(item.jumlah || 0).toLocaleString()}</td>` :
+                    `<td class="text-center" data-label="Jumlah">${(item.jumlah || 0).toLocaleString()}</td>`;
+
+                const luasCell = currentRegion ?
+                    `<td class="text-center clickable-cell text-primary fw-bolder" data-label="Luas [Ha]" data-href="${certifiedHref}">${(item.luas || 0).toFixed(2)}</td>` :
+                    `<td class="text-center" data-label="Luas [Ha]">${(item.luas || 0).toFixed(2)}</td>`;
+
+                const sudahSertifikatJumlahCell = currentRegion ?
+                    `<td class="text-center clickable-cell text-primary fw-bolder" data-label="Sudah Sertifikat (Jumlah)" data-href="${certifiedHref}">
+                        ${(item.sudah_sertifikat_jumlah || 0).toLocaleString()}
+                    </td>` :
+                    `<td class="text-center" data-label="Sudah Sertifikat (Jumlah)">
+                        ${(item.sudah_sertifikat_jumlah || 0).toLocaleString()}
+                    </td>`;
+
+                const sudahSertifikatLuasCell = currentRegion ?
+                    `<td class="text-center clickable-cell text-primary fw-bolder" data-label="Sudah Sertifikat (Luas)" data-href="${certifiedHref}">
+                        ${(item.sudah_sertifikat_luas || 0).toFixed(2)}
+                    </td>` :
+                    `<td class="text-center" data-label="Sudah Sertifikat (Luas)">
+                        ${(item.sudah_sertifikat_luas || 0).toFixed(2)}
+                    </td>`;
+
+                const belumSertifikatJumlahCell = currentRegion ?
+                    `<td class="text-center clickable-cell text-primary fw-bolder" data-label="Belum Sertifikat (Jumlah)" data-href="${uncertifiedHref}">
+                        ${(item.belum_sertifikat_jumlah || 0).toLocaleString()}
+                    </td>` :
+                    `<td class="text-center" data-label="Belum Sertifikat (Jumlah)">
+                        ${(item.belum_sertifikat_jumlah || 0).toLocaleString()}
+                    </td>`;
+
+                const belumSertifikatLuasCell = currentRegion ?
+                    `<td class="text-center clickable-cell text-primary fw-bolder" data-label="Belum Sertifikat (Luas)" data-href="${uncertifiedHref}">
+                        ${(item.belum_sertifikat_luas || 0).toFixed(2)}
+                    </td>` :
+                    `<td class="text-center" data-label="Belum Sertifikat (Luas)">
+                        ${(item.belum_sertifikat_luas || 0).toFixed(2)}
+                    </td>`;
+
                 tbody.append(`
                     <tr>
-                        <td class="text-center">${index + 1}</td>
-                        <td>${nameCell}</td>
-                        <td class="text-center">${(item.jumlah || 0).toLocaleString()}</td>
-                        <td class="text-center">${(item.luas || 0).toFixed(2)}</td>
-                        <td class="text-center">${(item.sudah_sertifikat_jumlah || 0).toLocaleString()}</td>
-                        <td class="text-center">${(item.sudah_sertifikat_luas || 0).toFixed(2)}</td>
-                        <td class="text-center">${(item.belum_sertifikat_jumlah || 0).toLocaleString()}</td>
-                        <td class="text-center">${(item.belum_sertifikat_luas || 0).toFixed(2)}</td>
+                        <td class="text-center no-click" data-label="No">${index + 1}</td>
+                        <td class="no-click" data-label="Kantor Kementerian Agama">${nameCell}</td>
+                        ${jumlahCell}
+                        ${luasCell}
+                        ${sudahSertifikatJumlahCell}
+                        ${sudahSertifikatLuasCell}
+                        ${belumSertifikatJumlahCell}
+                        ${belumSertifikatLuasCell}
                     </tr>
                 `);
             });
@@ -242,15 +286,25 @@ $(document).ready(function() {
 
             tbody.append(`
                 <tr class="total-row">
-                    <td colspan="2" class="text-center"><strong>Jumlah</strong></td>
-                    <td class="text-center"><strong>${totals.jumlah.toLocaleString()}</strong></td>
-                    <td class="text-center"><strong>${totals.luas.toFixed(2)}</strong></td>
-                    <td class="text-center"><strong>${totals.sudah_sertifikat_jumlah.toLocaleString()}</strong></td>
-                    <td class="text-center"><strong>${totals.sudah_sertifikat_luas.toFixed(2)}</strong></td>
-                    <td class="text-center"><strong>${totals.belum_sertifikat_jumlah.toLocaleString()}</strong></td>
-                    <td class="text-center"><strong>${totals.belum_sertifikat_luas.toFixed(2)}</strong></td>
+                    <td colspan="2" class="text-center" data-label=""><strong>Jumlah</strong></td>
+                    <td class="text-center" data-label="Total Jumlah"><strong>${totals.jumlah.toLocaleString()}</strong></td>
+                    <td class="text-center" data-label="Total Luas"><strong>${totals.luas.toFixed(2)}</strong></td>
+                    <td class="text-center" data-label="Total Sudah Sertifikat (Jumlah)"><strong>${totals.sudah_sertifikat_jumlah.toLocaleString()}</strong></td>
+                    <td class="text-center" data-label="Total Sudah Sertifikat (Luas)"><strong>${totals.sudah_sertifikat_luas.toFixed(2)}</strong></td>
+                    <td class="text-center" data-label="Total Belum Sertifikat (Jumlah)"><strong>${totals.belum_sertifikat_jumlah.toLocaleString()}</strong></td>
+                    <td class="text-center" data-label="Total Belum Sertifikat (Luas)"><strong>${totals.belum_sertifikat_luas.toFixed(2)}</strong></td>
                 </tr>
             `);
+
+            // Update click handler for clickable cells
+            if (currentRegion) {
+                $('.clickable-cell').on('click', function() {
+                    const href = $(this).data('href');
+                    if (href) {
+                        window.location = href;
+                    }
+                });
+            }
         } catch (error) {
             console.error('Error updating table:', error);
             showError('Error displaying data');
@@ -259,194 +313,3 @@ $(document).ready(function() {
 });
 </script>
 @endsection
-
-<!-- Optional: Add custom CSS for more minimalist look -->
-<style>
-  .table {
-    --bs-table-hover-bg: rgba(0, 0, 0, 0.02);
-  }
-  
-  .table th {
-    border-top: none;
-    font-weight: 500;
-    color: #6c757d;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-  }
-  
-  .table td {
-    vertical-align: middle;
-    color: #495057;
-  }
-  
-  .dataTables_filter input {
-    border-radius: 20px;
-    border: 1px solid #dee2e6;
-    padding: 8px 16px;
-    margin-left: 8px;
-  }
-  
-  .dataTables_length select {
-    border-radius: 20px;
-    border: 1px solid #dee2e6;
-    padding: 8px 16px;
-  }
-  
-  .page-link {
-    border: none;
-    color: #6c757d;
-  }
-  
-  .page-item.active .page-link {
-    background-color: #8BC34A;
-    border-color: #8BC34A;
-  }
-
-  .custom-table {
-    width: 100%;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-  }
-
-  .custom-table thead {
-    background-color: #8BC34A;
-    color: white;
-  }
-
-  .custom-table th {
-    padding: 15px 20px;
-    font-weight: 500;
-    text-align: left;
-  }
-
-  .custom-table td {
-    padding: 15px 20px;
-    color: #666;
-  }
-
-  .custom-table tbody tr {
-    border-bottom: 1px solid #f5f5f5;
-  }
-
-  .custom-table tbody tr:nth-child(even) {
-    background-color: #f8f9ff;
-  }
-
-  .custom-table tbody tr:hover {
-    background-color: #f1f8e9;
-    cursor: pointer;
-  }
-
-  .search-box {
-    margin-bottom: 20px;
-  }
-
-  .search-box input {
-    border-radius: 20px;
-    border: 1px solid #dee2e6;
-    padding: 8px 16px;
-    width: 250px;
-    background-color: white;
-  }
-
-  .sortable {
-    cursor: pointer;
-    position: relative;
-    padding-right: 20px !important;
-  }
-
-  .sortable i {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #fff;
-    opacity: 0.5;
-  }
-
-  .sortable:hover i {
-    opacity: 1;
-  }
-
-  .sort-active {
-    background-color: #7cb342;
-  }
-
-  .sort-active i {
-    opacity: 1;
-  }
-
-  .custom-table th {
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  .custom-table td {
-    vertical-align: middle;
-  }
-
-  .total-row {
-    background-color: #f1f8e9 !important;
-    font-weight: bold;
-  }
-
-  .custom-table thead tr:first-child th {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .custom-table thead th[rowspan="2"] {
-    vertical-align: middle;
-  }
-
-  .alert {
-    margin-bottom: 0;
-    border: none;
-    border-radius: 8px;
-  }
-
-  .alert-danger {
-    background-color: #ffe8e8;
-    color: #dc3545;
-  }
-
-  .alert-info {
-    background-color: #f1f8e9;
-    color: #8BC34A;
-  }
-
-  .spinner-border {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  /* Ensure consistent height for empty states */
-  #wakafTable tbody tr td[colspan="8"] {
-    padding: 2rem;
-  }
-
-  /* Style for the clear search button */
-  .btn-outline-primary {
-    border-color: #8BC34A;
-    color: #8BC34A;
-  }
-
-  .btn-outline-primary:hover {
-    background-color: #8BC34A;
-    color: white;
-  }
-
-  #wakafTable tbody tr td a:hover {
-    color: #8BC34A !important;
-  }
-
-  .breadcrumb {
-    background: none;
-    padding: 0;
-    margin-bottom: 1rem;
-  }
-
-  .breadcrumb-item + .breadcrumb-item::before {
-    content: ">";
-  }
-</style>

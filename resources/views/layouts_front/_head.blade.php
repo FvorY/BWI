@@ -7,6 +7,7 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/favicon.svg">
     <!-- NewsViral CSS  -->
+    <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style_front.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/widgets.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/color.css')}}">

@@ -64,9 +64,9 @@
                                     <a><span class="mr-15">
                                         </span>PROFIL</a>
                                     <ul class="sub-menu text-muted font-small">
-                                        <li><a href="index.html">Tentang Kami</a></li>
+                                        <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
                                         <li><a href="home-2.html">Struktur Organisai 2</a></li>
-                                        <li><a href="{{ url('/visimisi') }}">Visi & Misi</a></li>
+                                        <li><a href="{{ url('/vision-mission') }}">Visi & Misi</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">

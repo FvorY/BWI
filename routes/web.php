@@ -17,8 +17,11 @@ Route::get('/', 'HomefrontController@index')->name('/');
 Route::get('/visimisi', 'HomefrontController@visimisi');
 Route::get('/data-wakaf', 'DataWakafController@index')->name('data-wakaf');
 Route::get('/data-wakaf/get-data', 'DataWakafController@getData')->name('data-wakaf.getData');
-
-
+Route::get('/article/{id}', 'ArticleController@index')->name('article');
+Route::get('/jumlah-wakaf', 'JumlahWakafController@index')->name('jumlah-wakaf');
+Route::get('/profile-wakaf', 'ProfileWakafController@index')->name('profile-wakaf');
+Route::get('/about', 'AboutController@index')->name('about');
+Route::get('/vision-mission', 'VisionMissionController@index')->name('vision-mission');
 Route::group(['middleware' => 'guest'], function () {
 
     Route::get('/admin', function () {
