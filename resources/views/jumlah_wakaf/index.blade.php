@@ -32,19 +32,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($data as $item)
                                             <tr>
-                                                <td data-label="No">1.</td>
-                                                <td data-label="Kelurahan">MANGGARAI</td>
-                                                <td data-label="Luas">1680</td>
-                                                <td data-label="Penggunaan">Masjid</td>
-                                                <td data-label="Wakif" class="text-success">HM.HUSIN</td>
-                                                <td data-label="Nazhir">H.SANWANI</td>
-                                                <td data-label="Nomor Sertifikat">11</td>
-                                                <td data-label="Tanggal Sertifikat">1991-09-19</td>
-                                                <td data-label="Nomor AIW">07/AIW/91</td>
-                                                <td data-label="Tanggal AIW">1991-05-27</td>
+                                                <td data-label="No">{{ $item['no'] }}.</td>
+                                                <td data-label="Kelurahan">{{ $item['kelurahan'] }}</td>
+                                                <td data-label="Luas">{{ $item['luas'] }}</td>
+                                                <td data-label="Penggunaan">{{ $item['penggunaan'] }}</td>
+                                                <td data-label="Wakif" class="text-success">
+                                                    <a href="{{ url('/profile-wakif/' . urlencode($item['wakif'])) }}" 
+                                                       class="wakif-link" 
+                                                       style="text-decoration: none; color: #198754; cursor: pointer;">
+                                                        {{ $item['wakif'] }}
+                                                    </a>
+                                                </td>
+                                                <td data-label="Nazhir">{{ $item['nazhir'] }}</td>
+                                                <td data-label="Nomor Sertifikat">{{ $item['nomor_sertifikat'] }}</td>
+                                                <td data-label="Tanggal Sertifikat">{{ $item['tanggal_sertifikat'] }}</td>
+                                                <td data-label="Nomor AIW">{{ $item['nomor_aiw'] }}</td>
+                                                <td data-label="Tanggal AIW">{{ $item['tanggal_aiw'] }}</td>
                                             </tr>
-                                            <!-- Add more rows as needed -->
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -91,6 +98,11 @@
 .table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+.wakif-link:hover {
+    text-decoration: underline !important;
+    opacity: 0.9;
 }
 </style>
 @endsection

@@ -15,42 +15,42 @@
                             <div class="profile-details p-20">
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Peruntukan Tanah Wakaf Sesuai AIW</span>
-                                    <strong class="text-primary">Masjid</strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['peruntukan'] }}</strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Provinsi</span>
-                                    <strong class="text-primary">D K I JAKARTA</strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['provinsi'] }}</strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Kabupaten/Kota</span>
-                                    <strong class="text-primary">KOTA JAKARTA SELATAN</strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['kabupaten'] }}</strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Kecamatan</span>
-                                    <strong class="text-primary">T E B E T</strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['kecamatan'] }}</strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Kelurahan</span>
-                                    <strong class="text-primary">MANGGARAI</strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['kelurahan'] }}</strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Alamat</span>
-                                    <strong class="text-primary">RT.004/010 KEL. MANGGARAI</strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['alamat'] }}</strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Luas Tanah</span>
-                                    <strong class="text-primary">1.680,00 M<sup>2</sup></strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['luas_tanah'] }} M<sup>2</sup></strong>
                                 </div>
 
                                 <div class="detail-item mb-15 d-flex justify-content-between border-bottom pb-15">
                                     <span class="text-muted">Luas Bangunan</span>
-                                    <strong class="text-primary">0,00 M<sup>2</sup></strong>
+                                    <strong class="text-primary">{{ $data['wakaf_info']['luas_bangunan'] }} M<sup>2</sup></strong>
                                 </div>
                             </div>
                         </div>
@@ -63,37 +63,41 @@
                                     
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">Nama Wakif</label>
-                                        <strong class="text-primary">HM.HUSIN</strong>
+                                        <strong class="text-primary">{{ $data['wakif_info']['nama_wakif'] }}</strong>
                                     </div>
 
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">Nama Nazhir</label>
-                                        <strong class="text-primary">H.SANWANI</strong>
+                                        <strong class="text-primary">{{ $data['wakif_info']['nama_nazhir'] }}</strong>
                                     </div>
 
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">Status</label>
-                                        <span class="badge badge-primary">Sudah Sertifikat</span>
+                                        @if(isset($data['wakif_info']['no_sertifikat']))
+                                            <span class="badge badge-primary">Sudah Sertifikat</span>
+                                        @else
+                                            <span class="badge badge-warning">Belum Sertifikat</span>
+                                        @endif
                                     </div>
 
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">No. Sertifikat</label>
-                                        <strong class="text-primary">11</strong>
+                                        <strong class="text-primary">{{ $data['wakif_info']['no_sertifikat'] }}</strong>
                                     </div>
 
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">Tanggal Sertifikat</label>
-                                        <strong class="text-primary">1991-09-19</strong>
+                                        <strong class="text-primary">{{ $data['wakif_info']['tanggal_sertifikat'] }}</strong>
                                     </div>
 
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">No. AIW</label>
-                                        <strong class="text-primary">07/AIW/91</strong>
+                                        <strong class="text-primary">{{ $data['wakif_info']['no_aiw'] }}</strong>
                                     </div>
 
                                     <div class="info-item mb-15">
                                         <label class="text-muted d-block mb-2">Tanggal AIW</label>
-                                        <strong class="text-primary">1991-05-27</strong>
+                                        <strong class="text-primary">{{ $data['wakif_info']['tanggal_aiw'] }}</strong>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +150,7 @@
                 </div>
                 <div class="card-body p-0">
                     @if(isset($data['location']))
-                        <div id="map" class="border-radius-10" style="height: 400px; width: 100%;"></div>
+                        <div id="map" class="border-radius-10"></div>
                         <div class="p-3">
                             <small class="text-muted">
                                 <i class="mdi mdi-map-marker text-primary"></i> 
@@ -265,6 +269,13 @@
         height: 400px;
         width: 100%;
         z-index: 1;
+        border-radius: 10px;
+    }
+
+    /* Add this to ensure the map container is visible */
+    .leaflet-container {
+        background-color: #fff;
+        z-index: 1;
     }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -278,15 +289,17 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+
     @if(isset($data['location']))
-        // Initialize the map with default view
-        var map = L.map('map');
+        // Initialize the map
+        var map = L.map('map', {
+            zoomControl: true,
+            scrollWheelZoom: true
+        });
         
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
-            subdomains: ['a', 'b', 'c'],
-            minZoom: 1,
             maxZoom: 19
         }).addTo(map);
 
@@ -297,8 +310,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add marker
         const marker = L.marker([lat, lng]).addTo(map);
-        
-        // Add popup
         marker.bindPopup(`
             <div class="text-center">
                 <strong class="d-block mb-1">{{ $data['wakaf_info']['peruntukan'] }}</strong>
@@ -306,8 +317,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `).openPopup();
 
-        // Fix map display issues by reinitializing after load
-        setTimeout(function() {
+        // Fix map display issues
+        setTimeout(() => {
             map.invalidateSize();
         }, 100);
     @endif

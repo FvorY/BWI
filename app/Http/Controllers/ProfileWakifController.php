@@ -3,20 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\mMember;
-use App\Authentication;
-use Auth;
-use Carbon\Carbon;
-use Session;
-use DB;
-use Illuminate\Support\Collection;
 
-class ProfileWakafController extends Controller
+class ProfileWakifController extends Controller
 {
-    public function index(Request $request)
+    public function index($wakif)
     {
-        // Dummy data structure
+        $wakif = urldecode($wakif);
+        
+        // Dummy data for the specific wakif
         $data = [
             'wakaf_info' => [
                 'peruntukan' => 'Masjid',
@@ -29,7 +23,7 @@ class ProfileWakafController extends Controller
                 'luas_bangunan' => '0,00',
             ],
             'wakif_info' => [
-                'nama_wakif' => 'HM.HUSIN',
+                'nama_wakif' => $wakif,
                 'nama_nazhir' => 'H.SANWANI',
                 'status' => 'Sudah Sertifikat',
                 'no_sertifikat' => '11',
@@ -37,13 +31,11 @@ class ProfileWakafController extends Controller
                 'no_aiw' => '07/AIW/91',
                 'tanggal_aiw' => '1991-05-27',
             ],
-            // Add location data for OSM
             'location' => [
-                'latitude' => -6.2088,  // Jakarta coordinates
+                'latitude' => -6.2088,
                 'longitude' => 106.8456,
                 'zoom' => 15,
             ],
-            // Add gallery photos
             'gallery' => [
                 [
                     'id' => 1,
@@ -60,12 +52,12 @@ class ProfileWakafController extends Controller
                 [
                     'id' => 3,
                     'url' => 'https://images.unsplash.com/photo-1564507592333-c60657eea523',
-                    'caption' => 'Halaman Masjid', 
+                    'caption' => 'Halaman Masjid',
                     'date' => '2023-01-15',
                 ],
             ]
         ];
 
-        return view("profile_wakaf.index", compact('data'));
+        return view('profile_wakif.index', compact('data'));
     }
 }

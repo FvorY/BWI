@@ -19,7 +19,7 @@ Route::get('/data-wakaf', 'DataWakafController@index')->name('data-wakaf');
 Route::get('/data-wakaf/get-data', 'DataWakafController@getData')->name('data-wakaf.getData');
 Route::get('/article/{id}', 'ArticleController@index')->name('article');
 Route::get('/jumlah-wakaf', 'JumlahWakafController@index')->name('jumlah-wakaf');
-Route::get('/profile-wakaf', 'ProfileWakafController@index')->name('profile-wakaf');
+Route::get('/profile-wakif/{wakif}', 'ProfileWakifController@index')->name('profile-wakif');
 Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/vision-mission', 'VisionMissionController@index')->name('vision-mission');
 Route::group(['middleware' => 'guest'], function () {
