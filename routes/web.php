@@ -45,6 +45,7 @@ Route::get('/editpostscontent/{id}', 'PostController@edit');
 Route::get('/doeditpostscontent', 'PostController@doedit');
 Route::get('/removeimagepostscontent', 'PostController@removeimage');
 Route::get('/hapuspostscontent', 'PostController@hapus');
+Route::get('/highlightpostscontent', 'PostController@highlight');
 
 Route::get('/profil/visimisi', 'VisimisiController@index');
 Route::post('/profil/visimisi/save', 'VisimisiController@save');
@@ -85,4 +86,12 @@ Route::post('/simpannadzirs', 'NadzirsController@simpan');
 Route::get('/editnadzirs', 'NadzirsController@edit');
 Route::get('/hapusnadzirs', 'NadzirsController@hapus');
 
+Route::get('/banner', 'BannerController@index');
+Route::get('/tambahbanner', 'BannerController@tambah');
+Route::get('/bannertable', 'BannerController@datatable');
+Route::post('/simpanbanner', 'BannerController@simpan');
+Route::get('/editbanner/{id}', 'BannerController@edit');
+Route::get('/doeditbanner', 'BannerController@doedit');
+Route::get('/removeimagebanner', 'BannerController@removeimage');
+Route::get('/hapusbanner', 'BannerController@hapus');
 }); // End Route Groub middleware auth

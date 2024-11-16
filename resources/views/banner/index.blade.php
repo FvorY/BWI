@@ -9,17 +9,17 @@
         <ol class="breadcrumb bg-info">
           <li class="breadcrumb-item"><i class="fa fa-home"></i>&nbsp;<a href="{{url('/home')}}">Home</a></li>
           {{-- <li class="breadcrumb-item">Setup Master Tagihan</li> --}}
-          <li class="breadcrumb-item active" aria-current="page">Post Management</li>
+          <li class="breadcrumb-item active" aria-current="page">Banner Management</li>
         </ol>
       </nav>
     </div>
   	<div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Post Management</h4>
+                    <h4 class="card-title">Banner Management</h4>
                     <div class="col-md-12 col-sm-12 col-xs-12" align="right" style="margin-bottom: 15px;">
                       {{-- @if(Auth::user()->akses('MASTER DATA STATUS','tambah')) --}}
-                      <a href="{{url('/tambahpostscontent')}}" class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</a>
+                      <a href="{{url('/tambahbanner')}}" class="btn btn-info"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Data</a>
                       {{-- @endif --}}
                     </div>
                     <div class="table-responsive">
@@ -28,8 +28,6 @@
                               <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                <th>Body</th>
-                                <th>Highlight</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
@@ -64,7 +62,7 @@ var table = $('#table-data').DataTable({
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         ajax: {
-            url:'{{ url('/postscontenttable') }}',
+            url:'{{ url('/bannertable') }}',
         },
         columnDefs: [
 
@@ -80,16 +78,10 @@ var table = $('#table-data').DataTable({
                  targets: 2,
                  className: 'center'
               },
-              {
-                 targets: 3,
-                 className: 'center'
-              },
             ],
         "columns": [
           {data: 'DT_Row_Index', name: 'DT_Row_Index'},
           {data: 'title', name: 'title'},
-          {data: 'body', name: 'body'},
-          {data: 'is_highlight', name: 'is_highlight'},
           {data: 'aksi', name: 'aksi'},
         ]
   });
@@ -98,7 +90,7 @@ var table = $('#table-data').DataTable({
 
   function edit(id) {
     // body...
-    window.location.href = baseUrl + '/editpostscontent/' + id
+    window.location.href = baseUrl + '/editbanner/' + id
 
   }
 
@@ -109,7 +101,7 @@ var table = $('#table-data').DataTable({
 
     $.ajax({
       type: "post",
-      url: baseUrl + '/simpanpostscontent?_token='+"{{csrf_token()}}&"+$('.table_modal :input').serialize(),
+      url: baseUrl + '/simpanbanner?_token='+"{{csrf_token()}}&"+$('.table_modal :input').serialize(),
       data: formdata,
       processData: false, //important
       contentType: false,
@@ -155,7 +147,7 @@ var table = $('#table-data').DataTable({
   		buttons: [
   			['<button><b>Ya</b></button>', function (instance, toast) {
           $.ajax({
-            url:baseUrl + '/hapuspostscontent',
+            url:baseUrl + '/hapusbanner',
             data:{id},
             dataType:'json',
             success:function(data){
@@ -186,27 +178,14 @@ var table = $('#table-data').DataTable({
   		buttons: [
   			['<button><b>Ya</b></button>', function (instance, toast) {
           $.ajax({
-            url:baseUrl + '/highlightpostscontent',
+            url:baseUrl + '/highlightbanner',
             data:{id},
             dataType:'json',
             success:function(data){
-              if (data.status == 3) {
-                iziToast.success({
-                    icon: 'fa fa-save',
-                    message: 'Data Berhasil Disimpan!',
-                });
-                reloadall();
-              }else if(data.status == 4){
-                iziToast.warning({
-                    icon: 'fa fa-info',
-                    message: 'Data Gagal disimpan!',
-                });
-              } else {
-                iziToast.warning({
-                    icon: 'fa fa-info',
-                    message: 'Maksimal Highlight 5!',
-                });
-              }
+              iziToast.success({
+                  icon: 'fa fa-info',
+                  message: 'Data Berhasil Dihapus!',
+              });
 
               reloadall();
             }

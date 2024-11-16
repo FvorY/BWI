@@ -92,6 +92,14 @@
               </a>
             </li>
 
+             <li class="nav-item {{ Request::is('/banner') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/banner') }}">
+                <span class="menu-title">Banner Management</span>
+                {{-- <span class="menu-sub-title">( 2 new updates )</span> --}}
+                <i class="fa fa-newspaper-o"></i>
+              </a>
+            </li>
+
             <li class="nav-item {{Request::is('/cities') ? 'active' : ''}}">
               <a class="nav-link" href="{{url('/cities')}}">
                 <span class="menu-title">Cities</span>

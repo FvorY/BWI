@@ -20,14 +20,14 @@ use File;
 
 use Yajra\Datatables\Datatables;
 
-class PostController extends Controller
+class BannerController extends Controller
 {
     public function index() {
-      return view('posts.index');
+      return view('banner.index');
     }
 
     public function datatable() {
-      $data = DB::table('posts')
+      $data = DB::table('banner')
         ->get();
 
 
@@ -37,43 +37,20 @@ class PostController extends Controller
         // return $xyzab->i_price;
         return Datatables::of($data)
           ->addColumn('aksi', function ($data) {
-            if ($data->is_highlight == "N") {
             return  '<div class="btn-group">'.
-                     '<button type="button" onclick="highlight('.$data->id.')" class="btn btn-success btn-lg" title="edit">'.
-                     '<label class="fa fa-bars"></label></button>'.
                      '<button type="button" onclick="edit('.$data->id.')" class="btn btn-info btn-lg" title="edit">'.
                      '<label class="fa fa-pencil-alt"></label></button>'.
                      '<button type="button" onclick="hapus('.$data->id.')" class="btn btn-danger btn-lg" title="hapus">'.
                      '<label class="fa fa-trash"></label></button>'.
                   '</div>';
-            } else {
-              return  '<div class="btn-group">'.
-                     '<button type="button" onclick="highlight('.$data->id.')" class="btn btn-warning btn-lg" title="edit">'.
-                     '<label class="fa fa-bars"></label></button>'.
-                     '<button type="button" onclick="edit('.$data->id.')" class="btn btn-info btn-lg" title="edit">'.
-                     '<label class="fa fa-pencil-alt"></label></button>'.
-                     '<button type="button" onclick="hapus('.$data->id.')" class="btn btn-danger btn-lg" title="hapus">'.
-                     '<label class="fa fa-trash"></label></button>'.
-                  '</div>';
-            }
           })
-          ->addColumn('body', function ($data) {
-            return mb_strimwidth($data->body, 0, 255, "!!");
-          })
-          ->addColumn('is_highlight', function ($data) {
-            if ($data->is_highlight == "Y") {
-              return "Yes";
-            } else {
-              return "No";
-            }
-          })
-          ->rawColumns(['aksi', 'body'])
+          ->rawColumns(['aksi'])
           ->addIndexColumn()
           ->make(true);
     }
 
     public function tambah() {
-      return view('posts.tambah');
+      return view('banner.tambah');
     }
 
     public function simpan(Request $req) {
@@ -81,15 +58,12 @@ class PostController extends Controller
         DB::beginTransaction();
         try {
 
-          $max = DB::table("posts")->max('id') + 1;
+          $max = DB::table("banner")->max('id') + 1;
 
-          DB::table("posts")
+          DB::table("banner")
               ->insert([
               "id" => $max,
-              "user_id" => Auth::user()->id,
               "title" => $req->title,
-              "body" => $req->body,
-              "created_at" => Carbon::now('Asia/Jakarta'),
             ]);
 
           $file = $req->file('file');
@@ -99,7 +73,7 @@ class PostController extends Controller
             $imgPath = null;
             $tgl = Carbon::now('Asia/Jakarta');
             $folder = $tgl->year . $tgl->month . $tgl->timestamp;
-            $dir = 'image/uploads/Posts/' . $max . '/' . ($key + 1) ;
+            $dir = 'image/uploads/Banner/' . $max . '/' . ($key + 1) ;
             $childPath = $dir . '/';
             $path = $childPath;
 
@@ -113,9 +87,9 @@ class PostController extends Controller
                         $imgPath = $childPath . $name;
                         compressImage($value->getClientOriginalExtension(),$imgPath,$imgPath,60); 
 
-                        DB::table("post_photos")
+                        DB::table("banner_photos")
                             ->insert([
-                              'post_id' => $max,
+                              'banner_id' => $max,
                               'photo_url' => $imgPath,
                         ]);
 
@@ -138,15 +112,12 @@ class PostController extends Controller
         DB::beginTransaction();
         try {
 
-          $max = DB::table("posts")->where("id", $req->id)->max('id');
+          $max = DB::table("banner")->where("id", $req->id)->max('id');
 
-          DB::table("posts")
+          DB::table("banner")
               ->where("id", $req->id)
               ->update([
-              "user_id" => Auth::user()->id,
               "title" => $req->title,
-              "body" => $req->body,
-              "updated_at" => Carbon::now('Asia/Jakarta'),
             ]);
 
           $file = $req->file('file');
@@ -157,7 +128,7 @@ class PostController extends Controller
               $tgl = Carbon::now('Asia/Jakarta');
               $folder = $tgl->year . $tgl->month . $tgl->timestamp;
 
-              $dir = 'image/uploads/Posts/' . $req->id . '/' . ($max + ($key + 1)) ;
+              $dir = 'image/uploads/Banner/' . $req->id . '/' . ($max + ($key + 1)) ;
 
               $childPath = $dir . '/';
               $path = $childPath;
@@ -172,9 +143,9 @@ class PostController extends Controller
                           $imgPath = $childPath . $name;
                           compressImage($value->getClientOriginalExtension(),$imgPath,$imgPath,60);
 
-                        DB::table("post_photos")
+                        DB::table("banner_photos")
                             ->insert([
-                              'post_id' => $max,
+                              'banner_id' => $max,
                               'photo_url' => $imgPath,
                         ]);
 
@@ -201,15 +172,15 @@ class PostController extends Controller
       DB::beginTransaction();
       try {
 
-        DB::table("posts")
+        DB::table("banner")
             ->where("id", $req->id)
             ->delete();
 
-        DB::table("post_photos")
-          ->where("post_id", $req->id)
+        DB::table("banner_photos")
+          ->where("banner_id", $req->id)
           ->delete();
 
-        $dir = 'image/uploads/Posts/' . $req->id;
+        $dir = 'image/uploads/Banner/' . $req->id;
         $childPath = $dir . '/';
 
         $this->deleteDir($dir);
@@ -222,54 +193,16 @@ class PostController extends Controller
       }
     }
 
-    public function highlight(Request $req) {
-      DB::beginTransaction();
-      try {
-
-        $cek = DB::table("posts")
-                ->where("id", $req->id)
-                ->first();
-
-        if ($cek->is_highlight == "Y") {
-          DB::table("posts")
-              ->where("id", $req->id)
-              ->update([
-                "is_highlight" => "N",
-              ]);
-        } else {
-          $count = DB::table("posts")
-                ->where("is_highlight", "Y")
-                ->count();
-
-          if ($count < 5) {
-            DB::table("posts")
-            ->where("id", $req->id)
-            ->update([
-              "is_highlight" => "Y",
-            ]);
-          } else {
-            return response()->json(["status" => 5]);
-          }
-        }
-
-        DB::commit();
-        return response()->json(["status" => 3]);
-      } catch (\Exception $e) {
-        DB::rollback();
-        return response()->json(["status" => 4]);
-      }
-    }
-
     public function edit($id) {
-      return view('posts.edit', compact('id'));
+      return view('banner.edit', compact('id'));
     }
 
     public function doedit(Request $req) {
       $id = $req->id;
 
-      $dataposts = DB::table("posts")->where("id", $id)->first();
+      $dataposts = DB::table("banner")->where("id", $id)->first();
 
-      $dataimage = DB::table("post_photos")->where("post_id", $id)->get();
+      $dataimage = DB::table("banner_photos")->where("banner_id", $id)->get();
 
       return response()->json([
         'posts' => $dataposts,
@@ -278,9 +211,9 @@ class PostController extends Controller
     }
 
     public function removeimage(Request $req) {
-      DB::table("post_photos")->where("id", $req->id)->delete();
+      DB::table("banner_photos")->where("id", $req->id)->delete();
 
-      $dir = 'image/uploads/Posts/' . $cek->id;
+      $dir = 'image/uploads/Banner/' . $cek->id;
       $childPath = $dir . '/';
 
       $this->deleteDir($dir);
